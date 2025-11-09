@@ -24,7 +24,7 @@ public class LivroDigital extends Livro {
     
     @Override
     public String toString() {
-        return String.format("LivroDigital [ISBN: %s, Titulo: %s, (Sempre Disponível)]",
+        return String.format("LivroDigital [ISBN: %s, Titulo: %s, Digital]",
                 isbn, titulo);
     }
 }

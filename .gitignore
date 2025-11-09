@@ -30,3 +30,7 @@ Thumbs.db
 
 # Arquivos de configuração do usuário
 .config/
+livros_fisicos.json
+livros_digitais.json
+emprestimos.json
+usuarios.json

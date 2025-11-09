@@ -10,11 +10,9 @@ import br.ufrn.imd.libralibre.model.Livro;
 import br.ufrn.imd.libralibre.model.LivroFisico;
 import br.ufrn.imd.libralibre.model.Usuario;
 
-/**
- * classe de serviço que centraliza toda a lógica de negócio da biblioteca.
- * esta classe NÃO conhece a interface (seja console ou JavaFX).
- */
 public class BibliotecaService {
+    
+    private final PersistenciaService persistenciaService;
 
     // por enquanto, os dados que ficam na memória
     // no futuro, esta classe usará um "PersistenciaService" para ler/salvar em JSON.
@@ -23,8 +21,22 @@ public class BibliotecaService {
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public BibliotecaService() {
-        // pré-carregar dados para teste
-        // ex: usuarios.add(new Usuario("admin", "Administrador"));
+        this.persistenciaService = new PersistenciaService();
+        carregarDadosDoDisco();
+    }
+
+    // métodos auxiliares
+
+    private void carregarDadosDoDisco() {
+        PersistenciaService.DataHolder dados = persistenciaService.carregarDados();
+        this.acervo = dados.acervo;
+        this.usuarios = dados.usuarios;
+        this.emprestimos = dados.emprestimos;
+    }
+
+
+    private void salvarDadosNoDisco() {
+        persistenciaService.salvarDados(acervo, usuarios, emprestimos);
     }
 
     // métodos de busca
@@ -63,6 +75,7 @@ public class BibliotecaService {
             throw new IllegalStateException("Já existe um usuário com o ID: " + usuario.getId());
         }
         usuarios.add(usuario);
+        salvarDadosNoDisco();
     }
 
     public void adicionarLivro(Livro livro) {
@@ -70,6 +83,7 @@ public class BibliotecaService {
             throw new IllegalStateException("Já existe um livro com o ISBN: " + livro.getIsbn());
         }
         acervo.add(livro);
+        salvarDadosNoDisco();
     }
 
     // métodos de lógica do negocio
@@ -99,6 +113,7 @@ public class BibliotecaService {
 
         Emprestimo novoEmprestimo = new Emprestimo(isbn, idUsuario);
         emprestimos.add(novoEmprestimo);
+        salvarDadosNoDisco();
     }
 
 
@@ -116,6 +131,7 @@ public class BibliotecaService {
         }
 
         emprestimo.registrarDevolucao();
+        salvarDadosNoDisco();
     }
 
 
