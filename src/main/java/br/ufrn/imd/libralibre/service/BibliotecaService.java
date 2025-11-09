@@ -150,4 +150,24 @@ public class BibliotecaService {
                 .filter(Emprestimo::isAtivo)
                 .collect(Collectors.toList());
     }
+  
+    public java.util.Map<String, Long> getRelatorioConsolidado() {
+        return emprestimos.stream()
+            .collect(Collectors.groupingBy(
+                Emprestimo::getIsbnLivro,
+                Collectors.counting()
+            ))
+            .entrySet().stream() // mapa de volta para stream para ordenar
+            .sorted(java.util.Map.Entry.<String, Long>comparingByValue().reversed())
+            .collect(Collectors.toMap(
+                java.util.Map.Entry::getKey,   // ISBN como chave
+                java.util.Map.Entry::getValue, // contagem como valor
+                (e1, e2) -> e1,              // (para o collector)
+                java.util.LinkedHashMap::new // preserva a ordem da ordenação
+            ));
+    }
+
+    public int getTotalEmprestimosRegistrados() {
+        return emprestimos.size();
+    }
 }

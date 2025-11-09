@@ -42,6 +42,9 @@ public class MainApp {
                 case "7":
                     listarUsuarios();
                     break;
+                case "8":
+                    exibirRelatorio();
+                    break;
                 case "0":
                     System.out.println("Obrigado por usar o Libralibre. Até logo!");
                     scanner.close();
@@ -61,6 +64,7 @@ public class MainApp {
         System.out.println("5. Realizar Devolução");
         System.out.println("6. Listar Acervo de Livros");
         System.out.println("7. Listar Usuários");
+        System.out.println("8. Exibir Relatório de Empréstimos");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -186,4 +190,32 @@ public class MainApp {
         
         service.getUsuarios().forEach(usuario -> System.out.println(usuario.toString()));
     }
+
+    private static void exibirRelatorio() {
+    System.out.println("\n-=- Relatório Consolidado de Empréstimos -=-");
+    java.util.Map<String, Long> relatorio = service.getRelatorioConsolidado();
+
+    if (relatorio.isEmpty()) {
+        System.out.println("Nenhum emprestimo foi realizado ainda.");
+        return;
+    }
+
+    System.out.println("Ranking de Livros Mais Populares:");
+    int rank = 1;
+    
+    for (java.util.Map.Entry<String, Long> entrada : relatorio.entrySet()) {
+        String isbn = entrada.getKey();
+        Long contagem = entrada.getValue();
+
+        String titulo = service.buscarLivroPorIsbn(isbn)
+                               .map(livro -> livro.getTitulo())
+                               .orElse("Título Desconhecido (ISBN: " + isbn + ")");
+
+        System.out.printf("  %d. %s: %d empréstimo(s)\n", rank, titulo, contagem);
+        rank++;
+    }
+
+    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    System.out.println("Total de Empréstimos Registrados: " + service.getTotalEmprestimosRegistrados());
+}
 }
