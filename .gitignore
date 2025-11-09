@@ -1,0 +1,32 @@
+# Arquivos compilados do Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Pastas de Build (Maven, Gradle)
+target/
+build/
+out/
+
+# Arquivos de IDE (IntelliJ, VSCode, Eclipse, NetBeans)
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+nbproject/
+nb-configuration.xml
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do usuário
+.config/
