@@ -1,9 +1,7 @@
-# Libralibre
+# <img src="src/main/java/br/ufrn/imd/libralibre/images/logo.png" alt="Libralibre Logo" width="40" height="40"/> Libralibre
 > A free, open-source library management system for community libraries.
 
 This project was inicially developed for the **Programming Language 2 (LP2)** and **Coding Best Practices (BPP)** classes at the Instituto Métropole Digital (IMD/UFRN).
-
----
 
 ## About The Project
 
@@ -11,23 +9,15 @@ This project was inicially developed for the **Programming Language 2 (LP2)** an
 
 The goal is to replace manual ledgers and spreadsheets with a dedicated tool that is easy to use. The system handles book cataloging, user registration, and the complete check-out/check-in (loan) process. All application data is persisted locally using JSON files, requiring no external database or internet connection.
 
-### Core Features
-* **Acquisitions Management:** Register new books, supporting both physical (copy-controlled) and digital formats.
-* **User Management:** Register and manage library patrons.
-* **Loan Operations:** Check out books to users, with real-time availability validation.
-* **Return Operations:** Check in returned books, automatically updating copy availability.
-* **JSON Persistence:** All data is saved locally, ensuring the application is 100% offline.
-* **Consolidated Reporting:** View a ranked report of the most popular books based on loan history.
-
----
+### 📸 Screenshots
+*(Add screenshots)*
 
 ## 🛠️ Built With
 
 * **Java 17**
-* **Maven** (Dependency Management and Build Tool)
-* **GSON** (For JSON data persistence)
-
----
+* **JavaFX** (Graphical User Interface)
+* **Maven** (Dependency Management)
+* **GSON** (JSON Data Persistence)
 
 ## ⚙️ Getting Started
 
@@ -39,25 +29,23 @@ To get a local copy up and running, follow these simple steps.
 
 ### 1. Compiling the Project
 
-Navigate to the project's root directory (where the `pom.xml` file is located) and run the following command in your terminal:
+Navigate to the project's root directory and run:
 
 ```bash
-mvn compile
+mvn clean compile
 ```
 
 This will download all required dependencies (like GSON) and compile the project source code.
 
-### 2. Running the Application (Console)
+### 2. Running the Application
 
-After a successful compilation, you can run the application (currently in console mode) using the following command:
+After a successful compilation, you can run the application using the following command:
 
 ```bash
-mvn exec:java -Dexec.mainClass="br.ufrn.imd.libralibre.MainApp"
+mvn exec:java -Dexec.mainClass="br.ufrn.imd.libralibre.Launcher"
 ```
 
-The interactive library menu will launch directly in your terminal.
-
----
+The interactive library menu will launch the menu interface.
 
 ## Author
 
