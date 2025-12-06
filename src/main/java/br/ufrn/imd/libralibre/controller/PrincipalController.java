@@ -227,4 +227,26 @@ public class PrincipalController {
         }
     }
 
+    @FXML
+    private void handleListarEmprestimos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/libralibre/view/ListagemEmprestimos.fxml"));
+            Parent page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Histórico de Empréstimos");
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ListagemEmprestimosController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setService(service);
+
+            dialogStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

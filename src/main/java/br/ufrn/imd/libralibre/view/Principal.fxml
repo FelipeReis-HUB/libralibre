@@ -18,7 +18,8 @@
            <items>
              <Button text="Novo Livro" onAction="#handleNovoLivro"/>
              <Button text="Novo Usuário" onAction="#handleNovoUsuario"/>
-             <Button text="Realizar Empréstimo" onAction="#handleEmprestimo"/>
+             <Button text="Novo Empréstimo" onAction="#handleEmprestimo"/>
+             <Button text="Histórico Empréstimos" onAction="#handleListarEmprestimos"/>
              <Button text="Devolução" onAction="#handleDevolucao"/>
              <Button text="Relatórios" onAction="#handleRelatorio"/>
              <Button text="Atualizar Lista" onAction="#handleAtualizar"/>

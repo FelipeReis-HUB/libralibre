@@ -170,4 +170,9 @@ public class BibliotecaService {
     public int getTotalEmprestimosRegistrados() {
         return emprestimos.size();
     }
+
+    public List<Emprestimo> getTodosEmprestimos() {
+        // Retorna uma cópia para proteger a lista original (Boas Práticas)
+        return new ArrayList<>(emprestimos);
+    }
 }
