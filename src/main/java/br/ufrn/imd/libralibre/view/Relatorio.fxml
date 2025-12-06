@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.libralibre.controller.RelatorioController">
+   <top>
+      <VBox alignment="CENTER" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label text="Relatório de Popularidade">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   
+   <center>
+      <TableView fx:id="tabelaRelatorio" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colunaRank" text="#" prefWidth="50.0" style="-fx-alignment: CENTER;" />
+          <TableColumn fx:id="colunaTitulo" text="Título do Livro" prefWidth="250.0" />
+          <TableColumn fx:id="colunaIsbn" text="ISBN" prefWidth="120.0" />
+          <TableColumn fx:id="colunaQtd" text="Empréstimos" prefWidth="100.0" style="-fx-alignment: CENTER;" />
+        </columns>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   
+   <bottom>
+      <VBox alignment="CENTER_RIGHT">
+         <padding>
+            <Insets bottom="10.0" right="20.0" top="10.0" />
+         </padding>
+         <children>
+            <Label fx:id="lblTotal" text="Total de Empréstimos da Biblioteca: 0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

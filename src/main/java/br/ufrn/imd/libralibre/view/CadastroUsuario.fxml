@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.libralibre.controller.CadastroUsuarioController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Text text="Cadastrar Novo Usuário">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      
+      <VBox spacing="5.0" alignment="CENTER_LEFT">
+          <Label text="ID (Matrícula/CPF):" />
+          <TextField fx:id="campoId" promptText="Ex: 2023001" />
+      </VBox>
+      
+      <VBox spacing="5.0" alignment="CENTER_LEFT">
+          <Label text="Nome Completo:" />
+          <TextField fx:id="campoNome" promptText="Ex: Ana Silva" />
+      </VBox>
+      
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Button defaultButton="true" text="Salvar" onAction="#handleSalvar" />
+            <Button cancelButton="true" text="Cancelar" onAction="#handleCancelar" />
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
